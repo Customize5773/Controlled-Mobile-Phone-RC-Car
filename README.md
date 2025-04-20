@@ -19,17 +19,90 @@ In our early days of diving into competitive robotics—whether it was the inten
 
 ---
 
-## Electronic Components ⚙️🔋
+## Hardware Components ⚙️🔋
 
-The primary hardware components for this project include:
+The project requires the following electronic components:
 
-- **NodeMCU (ESP8266):** 🧠 The brain of the robot with built-in WiFi capabilities.
-- **L298N Motor Driver:** 🛞 Drives two DC motors with PWM control.
-- **DC Motors:** 💨 Two motors providing propulsion for each wheel.
-- **Power Supply:** 🔋 Battery pack (e.g., Lithium Polymer) suited for the motors’ voltage and current demands.
-- **Chassis & Miscellaneous Hardware:** ⚒️ Wheels, connectors, and structural frame needed for assembly.
+| **Component**         | **Details**                                                             |
+|-----------------------|-------------------------------------------------------------------------|
+| ESP8266 Module        | NodeMCU or any ESP8266-based development board                           |
+| Motor Driver Module   | L298N                                                                    |
+| **DC Motors (2x)**    | Right and Left motors as dictated by the connections below                |
+| Jumper Wires          | For connecting the ESP8266 to the motor driver and other peripherals      |
+| Power Supply/Battery  | Suitable power source to drive the ESP8266 and motors                      |
 
-*Tip:* These components are widely available and offer a great balance between high performance and cost-effectiveness. 💸
+**Pin Assignments for Motors (as used in the code):**
+
+- **Right Motor**:  
+  - Speed control (RIGHT_EN): GPIO14 (D5)  
+  - Direction control (RIGHT_IN1): GPIO15 (D8)  
+  - Direction control (RIGHT_IN2): GPIO13 (D7)
+
+- **Left Motor**:  
+  - Speed control (LEFT_EN): GPIO12 (D6)  
+  - Direction control (LEFT_IN1): GPIO2 (D4)  
+  - Direction control (LEFT_IN2): GPIO0 (D3)
+
+---
+
+## Software Design 💻📐
+
+The firmware is written in C++ and leverages the ESP8266WiFi and ESP8266WebServer libraries. The software design is modular, separating the low-level motor operations from the higher-level control algorithms. Key functionalities include:
+
+- **WiFi Access Point Setup**:  
+  The ESP8266 is configured as an access point with the SSID `NodeMCU_Car` and an IP address provided on initialization.
+
+- **Embedded Web Server**:  
+  A lightweight HTTP server listens on port 80. Incoming HTTP requests containing motor commands (via the "State" parameter) are processed and executed.
+
+- **Motor Control Algorithms**:  
+  Various commands allow for nuanced control of the car including forward, backward, pivoting, and turning. PWM is used to adjust speeds dynamically, and custom speed levels can be set by sending numeric commands (0-9).
+
+- **Object-Oriented Implementation**:  
+  The separation into `Motor` and `MotorController` classes ensures an organized code architecture that is both scalable and easy to modify—a highly recommended practice in academic and research environments.
+
+---
+
+## Diagrams and Wiring 📊🔌
+
+### System Architecture Diagram
++-------------------------------+
+|         ESP8266 Module        |
+|  (WiFi AP: "NodeMCU_Car")     |
++---------------+---------------+
+|
+| (HTTP Commands)
+|
++---------------v---------------+
+|  L298N Motor Driver Module  |
++---------------+---------------+
+|               |                        
+|               |
+Right Motor     Control Signals     Left Motor
+       +-------------------------------+
+       |         ESP8266 Module        |
+       |  (WiFi AP: "NodeMCU_Car")      |
+       +---------------+---------------+
+                       |
+                       | (HTTP Commands)
+                       |
+       +---------------v---------------+
+       |   L298N Motor Driver Module   |
+       +---------------+---------------+
+         |             |             |
+         |             |             |
+  Right Motor   Control Signals  Left Motor
+  
+### Wiring Overview
+
+- **ESP8266 → L298N**  
+  The ESP8266 GPIO pins are interlinked with the L298N's control pins according to the following configuration:  
+  - Right Motor:  
+    - EN: GPIO14, IN1: GPIO15, IN2: GPIO13  
+  - Left Motor:  
+    - EN: GPIO12, IN1: GPIO2, IN2: GPIO0
+
+![image](https://github.com/user-attachments/assets/3797e829-b142-4a44-9a49-5f68027f4cdd)
 
 ---
 
