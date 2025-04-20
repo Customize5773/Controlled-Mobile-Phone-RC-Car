@@ -4,7 +4,7 @@
 
 ![NodeMCU-ESP8266-WiFi-Controlled-Robotic-Car](https://github.com/user-attachments/assets/59c782b4-405d-44bd-a470-132928bfe9ab)
 
->*Source:https://how2electronics.com/wifi-controlled-robot-using-esp8266-android-app/*
+>*Source:[https://how2electronics.com/wifi-controlled-robot-using-esp8266-android-app/]*
 
 NodeMCU Car Control is a robust and flexible control system designed for two-wheeled robots. Leveraging the NodeMCU (ESP8266) and an L298N motor driver, this project offers remote robot control via an integrated HTTP server. Built with a modular, object-oriented approach, it targets real-world competitive robotics challenges by providing an affordable and scalable solution ideal for mechatronics enthusiasts and students.
 
@@ -46,6 +46,8 @@ The project requires the following electronic components:
 ---
 
 ## Software Design 💻📐
+![Screenshot 2025-04-20 at 14-47-55 wifi Mobile Phone Controlled Car arduino - Penelusuran Google](https://github.com/user-attachments/assets/71a50680-7b90-4cb2-abc4-d857cdbd2d88)
+
 
 The firmware is written in C++ and leverages the ESP8266WiFi and ESP8266WebServer libraries. The software design is modular, separating the low-level motor operations from the higher-level control algorithms. Key functionalities include:
 
@@ -61,39 +63,36 @@ The firmware is written in C++ and leverages the ESP8266WiFi and ESP8266WebServe
 - **Object-Oriented Implementation**:  
   The separation into `Motor` and `MotorController` classes ensures an organized code architecture that is both scalable and easy to modify—a highly recommended practice in academic and research environments.
 
-![Screenshot 2025-04-20 at 14-47-55 wifi Mobile Phone Controlled Car arduino - Penelusuran Google](https://github.com/user-attachments/assets/71a50680-7b90-4cb2-abc4-d857cdbd2d88)
+> Link Download App : [https://drive.google.com/file/d/1AoNs3wSQclL30Q25xIi6Hopy8Fb1ctwT/view?usp=sharing]
 
 ---
 
 ## Diagrams and Wiring 📊🔌
 
 ### System Architecture Diagram
-+-------------------------------+
-|         ESP8266 Module        |
-|  (WiFi AP: "NodeMCU_Car")     |
-+---------------+---------------+
-|
-| (HTTP Commands)
-|
-+---------------v---------------+
-|  L298N Motor Driver Module  |
-+---------------+---------------+
-|               |                        
-|               |
-Right Motor     Control Signals     Left Motor
-       +-------------------------------+
-       |         ESP8266 Module        |
-       |  (WiFi AP: "NodeMCU_Car")      |
-       +---------------+---------------+
-                       |
-                       | (HTTP Commands)
-                       |
-       +---------------v---------------+
-       |   L298N Motor Driver Module   |
-       +---------------+---------------+
-         |             |             |
-         |             |             |
-  Right Motor   Control Signals  Left Motor
+         +------------------+
+         | ESP8266-Module   |
+         +------------------+
+                  |
+                  v
+         +-------------------------+
+         | WiFi-AP: NodeMCU-Car     |
+         +-------------------------+
+                  |
+                  v
+         +------------------+
+         | HTTP-Commands    |
+         +------------------+
+                  |
+                  v
+         +------------------------------+
+         | L298N-Motor-Driver-Module    |
+         +------------------------------+
+                /               |          \
+               v                v           v
+      +---------------+  +---------------+  +--------------+
+      | Right-Motor   |  | Control-Signal|  | Left-Motor   |
+      +---------------+  +---------------+  +--------------+
   
 ### Wiring Overview
 
@@ -106,6 +105,7 @@ Right Motor     Control Signals     Left Motor
 
 ![image](https://github.com/user-attachments/assets/3797e829-b142-4a44-9a49-5f68027f4cdd)
 
+> _Source:[https://www.youtube.com/watch?v=uz4UvLh3jqg]_
 ---
 
 ## Implementation 🏗️📐
@@ -132,27 +132,6 @@ The implementation of NodeMCU Car Control is carefully structured to ensure clar
 
 ---
 
-## Roadmap 🌟🛤️
-
-Future plans and enhancements for the project:
-
-- **Sensor Integration:**  
-  Incorporate ultrasonic/infrared sensors for obstacle detection 👀 and avoidance 🚧.
-  
-- **Advanced State Machine:**  
-  Develop a robust control system 💡 to manage complex sequences 🔄 and error-handling for improved reliability 🛡️.
-  
-- **Enhanced Web Interface:**  
-  Create an interactive dashboard 🖥️ for monitoring real-time telemetry 📊 and controlling the robot 🎮.
-  
-- **System Scalability:**  
-  Expand the design 🔝 to support additional motors ⚙️ or auxiliary modules for extra functionalities 🚀.
-
-- **Community Collaboration:**  
-  Engage with the mechatronics community 🤝 to receive feedback 📬 and collaborate on new features 🧠.
-
----
-
 ## License 📄🛡️
 
 This project is licensed under the **GNU GENERAL PUBLIC LICENSE Version 3**. See the [LICENSE](LICENSE) file for further details.
@@ -161,7 +140,7 @@ This project is licensed under the **GNU GENERAL PUBLIC LICENSE Version 3**. See
 
 ## Inspiration 💡✨
 
-Inspired by creative engineering showcased by Pro Now, this project embodies a relentless quest for innovation amid technical challenges ⚙️🔥. For a glimpse into the inspiration, check out the [Pro Now YouTube video](https://youtu.be/gU7vlhU1HvU?si=bU8_l4K3_jUoTEup) and dive into the world of dynamic robotics competition. 🚀🤖
+Inspired by creative engineering showcased by **A to Z tech solution**, this project embodies a relentless quest for innovation amid technical challenges ⚙️🔥. For a glimpse into the inspiration, check out the [A to Z tech solution YouTube video](https://www.youtube.com/watch?v=uz4UvLh3jqg) and dive into the world of dynamic robotics competition. 🚀🤖
 
 ---
 
