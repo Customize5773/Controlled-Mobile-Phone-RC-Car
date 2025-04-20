@@ -4,7 +4,7 @@
 
 ![NodeMCU-ESP8266-WiFi-Controlled-Robotic-Car](https://github.com/user-attachments/assets/59c782b4-405d-44bd-a470-132928bfe9ab)
 
-*Source:https://how2electronics.com/wifi-controlled-robot-using-esp8266-android-app/*
+>*Source:https://how2electronics.com/wifi-controlled-robot-using-esp8266-android-app/*
 
 NodeMCU Car Control is a robust and flexible control system designed for two-wheeled robots. Leveraging the NodeMCU (ESP8266) and an L298N motor driver, this project offers remote robot control via an integrated HTTP server. Built with a modular, object-oriented approach, it targets real-world competitive robotics challenges by providing an affordable and scalable solution ideal for mechatronics enthusiasts and students.
 
