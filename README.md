@@ -61,6 +61,8 @@ The firmware is written in C++ and leverages the ESP8266WiFi and ESP8266WebServe
 - **Object-Oriented Implementation**:  
   The separation into `Motor` and `MotorController` classes ensures an organized code architecture that is both scalable and easy to modify—a highly recommended practice in academic and research environments.
 
+![Screenshot 2025-04-20 at 14-47-55 wifi Mobile Phone Controlled Car arduino - Penelusuran Google](https://github.com/user-attachments/assets/71a50680-7b90-4cb2-abc4-d857cdbd2d88)
+
 ---
 
 ## Diagrams and Wiring 📊🔌
